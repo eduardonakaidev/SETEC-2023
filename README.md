@@ -30,4 +30,4 @@ Execução
 Para executar a aplicação, abra o terminal, navegue até a pasta do projeto e execute o comando dotnet run.
 
 Documentação
-A documentação da API está disponível em http://localhost:5000/swagger.
+A documentação da API está disponível em https://localhost:7206/swagger.
