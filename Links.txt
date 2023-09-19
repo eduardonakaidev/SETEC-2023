@@ -1,0 +1,8 @@
+Visual Studio - https://visualstudio.microsoft.com/pt-br/vs/community/
+Dotnet 7 - https://dotnet.microsoft.com/en-us/download/dotnet/7.0
+Mysql - https://dev.mysql.com/downloads/workbench/
+
+
+Bando de dados:
+IP: 191.96.251.168
+Senha: Senha123
