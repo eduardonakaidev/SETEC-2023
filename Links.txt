@@ -6,3 +6,8 @@ Mysql - https://dev.mysql.com/downloads/workbench/
 Bando de dados:
 IP: 191.96.251.168
 Senha: Senha123
+
+Comando banco
+
+Add-Migration nomeMigration
+Update-Database

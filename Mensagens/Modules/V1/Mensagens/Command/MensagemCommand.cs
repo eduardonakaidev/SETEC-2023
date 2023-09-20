@@ -17,10 +17,10 @@ public class MensagemCommand
         _mensagemRepository = mensagemRepository;
     }
 
-    public async Task<Response> EnviarPrimeiraMensagemAsync(EnviarMensagemDTO enviarMensagem)
+    public async Task<Response> EnviarPrimeiraMensagemAsync(Mensagem enviarMensagem)
     {
         Mensagem mensagemSalva = await _mensagemRepository.
-            SalvarMensagemAsync(_mapper.Map<Mensagem>(enviarMensagem));
+            SalvarMensagemAsync(enviarMensagem);
 
         return new Response(true, mensagemSalva, "Mensagem enviada com sucesso!");
     }

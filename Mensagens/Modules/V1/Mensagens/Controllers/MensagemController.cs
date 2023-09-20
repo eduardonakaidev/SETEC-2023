@@ -17,8 +17,8 @@ public class MensagemController : ControllerBase
         _mensagemCommand = mensagemCommand;
     }
 
-    [HttpPost("primeiraMensagem")]
-    public async Task<ActionResult<Mensagem>> EnviarPrimeiraMensagemAsync([FromBody] EnviarMensagemDTO enviarMensagem)
+    [HttpPost("primeiraMensagem/{id}")]
+    public async Task<ActionResult<Mensagem>> EnviarPrimeiraMensagemAsync([FromBody] Mensagem enviarMensagem)
     {
         Response response = await _mensagemCommand.EnviarPrimeiraMensagemAsync(enviarMensagem);
 
