@@ -1,8 +1,11 @@
 ﻿using Mensagens.Data;
 using Mensagens.Modules.V1.Mensagens.Command;
+using Mensagens.Modules.V1.Mensagens.Enums;
 using Mensagens.Modules.V1.Mensagens.Models;
 using Mensagens.Modules.V1.Mensagens.Models.Request;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Data;
 
 namespace Mensagens.Modules.V1.Mensagens.Controllers;
 
@@ -11,10 +14,12 @@ namespace Mensagens.Modules.V1.Mensagens.Controllers;
 public class MensagemController : ControllerBase
 {
     private readonly MensagemCommand _mensagemCommand;
+    private readonly DataContext _datacontext;
 
-    public MensagemController(MensagemCommand mensagemCommand)
+    public MensagemController(MensagemCommand mensagemCommand,DataContext dataContext)
     {
         _mensagemCommand = mensagemCommand;
+        _datacontext = dataContext;
     }
 
     [HttpPost("primeiraMensagem/{id}")]
@@ -31,4 +36,11 @@ public class MensagemController : ControllerBase
             return Ok(response.Data ?? response.Status);
         }
     }
+    [HttpGet]
+    public async Task<ActionResult> BuscarMensagens()
+    {   
+        return Ok(await _datacontext.Mensagem.Include(x => x.UsuarioAbertura).Include(x => x.UsuarioRecebido).ToListAsync());
+    }
+   
+  
 }

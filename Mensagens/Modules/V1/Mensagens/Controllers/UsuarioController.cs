@@ -1,7 +1,9 @@
 ﻿using Mensagens.Data;
+using Mensagens.Modules.V1.Mensagens.Command;
 using Mensagens.Modules.V1.Mensagens.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions;
 
 namespace Mensagens.Modules.V1.Mensagens.Controllers
 {
@@ -10,23 +12,25 @@ namespace Mensagens.Modules.V1.Mensagens.Controllers
     public class UsuarioController : ControllerBase
     {
         private readonly DataContext _dataContext;
-
-        public UsuarioController(DataContext dataContext)
+        private readonly UsuarioCommand _usuarioCommand;
+       
+        public UsuarioController(DataContext dataContext,UsuarioCommand usuarioCommand)
         {
             _dataContext = dataContext;
+            _usuarioCommand = usuarioCommand;
         }
 
         [HttpGet]
         public async Task<ActionResult> Get()
         {
-            return Ok(await _dataContext
-                .Usuario.Where(x => x.Id > 0)
-                .ToListAsync());
+            return Ok( await _usuarioCommand.RetornarTodos());
         }
 
         [HttpPost]
-        public async Task<ActionResult> Post(Usuario usuario)
+        public async Task<ActionResult> Post(SalvarUsuario salvarusuario)
         {
+            Usuario usuario = new Usuario(0, salvarusuario.Nome, salvarusuario.Email);
+
             _dataContext.Usuario.Add(usuario);
             await _dataContext.SaveChangesAsync();
             return Ok(usuario);
@@ -40,8 +44,8 @@ namespace Mensagens.Modules.V1.Mensagens.Controllers
                 .ToListAsync());
         }
 
-        [HttpDelete("/{id}")]
-        public async Task<ActionResult> Deletar(int id)
+        [HttpDelete("usuario/{id}")]
+        public async Task<ActionResult> Deletar(long id)
         {
             Usuario? usuario = await _dataContext
                 .Usuario.FindAsync(id);

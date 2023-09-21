@@ -6,6 +6,29 @@ namespace Mensagens.Modules.V1.Mensagens.Models;
 
 public class Mensagem
 {
+    public Mensagem(long id,
+        int idUsuarioEnvio,
+        int idUsuarioRecebido,
+        long idSessaoChat, 
+        long? idMensagemPadrao, 
+        long? idAcoes, 
+        string? texto,
+        DateTime dataHora, 
+        StatusMensagem statusMensagem
+       )
+    {
+        Id = id;
+        IdUsuarioEnvio = idUsuarioEnvio;
+        IdUsuarioRecebido = idUsuarioRecebido;
+        IdSessaoChat = idSessaoChat;
+        IdMensagemPadrao = idMensagemPadrao;
+        IdAcoes = idAcoes;
+        Texto = texto;
+        DataHora = dataHora;
+        StatusMensagem = statusMensagem;
+        
+    }
+
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public long Id { get; set; }

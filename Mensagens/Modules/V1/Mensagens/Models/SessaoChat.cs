@@ -4,8 +4,31 @@ using Mensagens.Modules.V1.Mensagens.Enums;
 
 namespace Mensagens.Modules.V1.Mensagens.Models;
 
+
 public class SessaoChat
+   
 {
+    
+
+    public SessaoChat(long idSessaoChat, 
+        int idUsuarioAbertura,
+        int idUsuarioRecebido, 
+        DateTime abertura ,
+        DateTime ultimaAtividade, 
+        StatusSessaoChat statusSessao, 
+        AvaliacaoChat avaliacao
+        )
+    {
+        IdSessaoChat = idSessaoChat;
+        IdUsuarioAbertura = idUsuarioAbertura;
+        IdUsuarioRecebido = idUsuarioRecebido;
+        Abertura = abertura;
+        UltimaAtividade = ultimaAtividade;
+        StatusSessao = statusSessao;
+        Avaliacao = avaliacao;
+       
+    }
+
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public long IdSessaoChat { get; set; }
