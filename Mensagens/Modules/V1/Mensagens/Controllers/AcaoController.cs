@@ -1,4 +1,5 @@
 using Mensagens.Data;
+using Mensagens.Modules.V1.Mensagens.Command;
 using Mensagens.Modules.V1.Mensagens.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,18 +12,18 @@ namespace Mensagens.Modules.V1.Mensagens.Controllers
     public class AcaoController : ControllerBase
     {
         private readonly DataContext _dataContext;
+        private readonly AcaoCommand _acaoCommand;
 
-        public AcaoController(DataContext dataContext)
+        public AcaoController(DataContext dataContext, AcaoCommand acaoCommand)
         {
             _dataContext = dataContext;
+            _acaoCommand = acaoCommand;
         }
 
         [HttpGet("Buscar ações")]
         public async Task<ActionResult> Get()
         {
-            return Ok(await _dataContext
-                .Acao.Where(x => x.Id > 0)
-                .ToListAsync());
+            return Ok(await _acaoCommand.RetornarTodos());
         }
 
         [HttpPost]

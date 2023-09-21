@@ -1,4 +1,5 @@
 using Mensagens.Data;
+using Mensagens.Modules.V1.Mensagens.Command;
 using Mensagens.Modules.V1.Mensagens.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,18 +12,17 @@ namespace Mensagens.Modules.V1.Mensagens.Controllers
     public class SessaoChatController : ControllerBase
     {
         private readonly DataContext _dataContext;
-
-        public SessaoChatController(DataContext dataContext)
+        private readonly SessaoChatCommand _sessaoChatCommand;
+        public SessaoChatController(DataContext dataContext,SessaoChatCommand sessaoChatCommand)
         {
             _dataContext = dataContext;
+            _sessaoChatCommand = sessaoChatCommand;
         }
 
         [HttpGet]
         public async Task<ActionResult> Get()
         {
-            return Ok(await _dataContext
-                .SessaoChat.Where(x => x.IdSessaoChat > 0)
-                .ToListAsync());
+            return Ok(await _sessaoChatCommand.RetornarTodos());
         }
 
         [HttpPost]

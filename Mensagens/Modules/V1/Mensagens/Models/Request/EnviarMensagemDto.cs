@@ -29,7 +29,7 @@ public class EnviarMensagemrMappingProfile : Profile
             .ForMember(dest => dest.Abertura, opt => opt.MapFrom(src => DateTime.Now))
             .ForMember(dest => dest.UltimaAtividade, opt => opt.MapFrom(src => DateTime.Now))
             .ForMember(dest => dest.StatusSessao, opt => opt.MapFrom(src => StatusSessaoChat.AguardandoRespostaRecebendo))
-            .ForMember(dest => dest.Avaliacao, opt => opt.Ignore())
+           
             .ForMember(dest => dest.IdSessaoChat, opt => opt.Ignore());
     }
 }

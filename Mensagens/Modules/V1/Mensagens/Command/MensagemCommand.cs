@@ -22,6 +22,6 @@ public class MensagemCommand
         Mensagem mensagemSalva = await _mensagemRepository.
             SalvarMensagemAsync(enviarMensagem);
 
-        return new Response(true, mensagemSalva, "Mensagem enviada com sucesso!");
+        return new Response(true, mensagemSalva, "Mensagem enviada com sucesso!");  
     }
 }

@@ -15,8 +15,8 @@ public class SessaoChat
         int idUsuarioRecebido, 
         DateTime abertura ,
         DateTime ultimaAtividade, 
-        StatusSessaoChat statusSessao, 
-        AvaliacaoChat avaliacao
+        StatusSessaoChat statusSessao 
+      
         )
     {
         IdSessaoChat = idSessaoChat;
@@ -25,7 +25,7 @@ public class SessaoChat
         Abertura = abertura;
         UltimaAtividade = ultimaAtividade;
         StatusSessao = statusSessao;
-        Avaliacao = avaliacao;
+    
        
     }
 
@@ -45,7 +45,7 @@ public class SessaoChat
 
     public StatusSessaoChat StatusSessao { get; set; }
 
-    public AvaliacaoChat Avaliacao { get; set; }
+   
 
     // Objetos que não fazem parte da entidade
     public Usuario? UsuarioAbertura { get; set; }
