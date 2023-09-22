@@ -16,6 +16,11 @@ public static class Servicos
     public static IServiceCollection AddCommands(this IServiceCollection services)
     {
         services.AddTransient<MensagemCommand>();
+        services.AddTransient<UsuarioCommand>();
+        services.AddTransient<AcaoCommand>();
+        services.AddTransient<MessagemPadraoCommand>();
+        services.AddTransient<SessaoChatCommand>();
+        
 
         return services;
     }

@@ -10,9 +10,9 @@ public class SessaoChat
 {
     
 
-    public SessaoChat(long idSessaoChat, 
-        int idUsuarioAbertura,
-        int idUsuarioRecebido, 
+    public SessaoChat(long idSessaoChat,
+        long idUsuarioAbertura,
+        long idUsuarioRecebido, 
         DateTime abertura ,
         DateTime ultimaAtividade, 
         StatusSessaoChat statusSessao 
@@ -34,10 +34,10 @@ public class SessaoChat
     public long IdSessaoChat { get; set; }
 
     [ForeignKey("Usuario")]
-    public int IdUsuarioAbertura { get; set; }
+    public long IdUsuarioAbertura { get; set; }
 
     [ForeignKey("Usuario")]
-    public int IdUsuarioRecebido { get; set; }
+    public long IdUsuarioRecebido { get; set; }
 
     public DateTime Abertura { get; set; }
 

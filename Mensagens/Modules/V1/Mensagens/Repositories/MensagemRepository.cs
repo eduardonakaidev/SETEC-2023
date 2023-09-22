@@ -13,7 +13,6 @@ public class MensagemRepository : IMensagem
     {
         _dataContext = dataContext;
     }
-
     public async Task<Mensagem> SalvarMensagemAsync(Mensagem mensagem)
     {
         _dataContext.Mensagem.Add(mensagem);

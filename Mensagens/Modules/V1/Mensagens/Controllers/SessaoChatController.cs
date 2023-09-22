@@ -1,6 +1,7 @@
 using Mensagens.Data;
 using Mensagens.Modules.V1.Mensagens.Command;
 using Mensagens.Modules.V1.Mensagens.Models;
+using Mensagens.Modules.V1.Mensagens.Models.Request;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions;
@@ -26,18 +27,17 @@ namespace Mensagens.Modules.V1.Mensagens.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Post(SessaoChat SessaoChat)
+        public async Task<ActionResult> Post(IniciarSessaoDto SessaoChat)
         {
-            Usuario? usuarioabertura = await _dataContext.Usuario.FindAsync(SessaoChat.IdUsuarioAbertura);
-            if(usuarioabertura is null){
-                return BadRequest("Id do usuário abertura não foi encontrado");
-            }
-            Usuario? usuariorecebimento = await _dataContext.Usuario.FindAsync(SessaoChat.IdUsuarioRecebido);
+            SessaoChat? sessaochat = new(0, SessaoChat.UsuarioAbertura, SessaoChat.UsuarioRecebimento, SessaoChat.Abertura, SessaoChat.UltimaAtividade, SessaoChat.Status);
+            Usuario? usuarioabertura = await _dataContext.Usuario.FindAsync(sessaochat.UsuarioAbertura);
+            
+            Usuario? usuariorecebimento = await _dataContext.Usuario.FindAsync(sessaochat.IdUsuarioRecebido);
             if (usuariorecebimento is null){
 
                 return BadRequest("Id do usuário recebimento não foi encontrado");
             }
-            _dataContext.SessaoChat.Add(SessaoChat);
+            _dataContext.SessaoChat.Add(sessaochat);
             await _dataContext.SaveChangesAsync();
             return Ok(SessaoChat);
         }
@@ -57,8 +57,20 @@ namespace Mensagens.Modules.V1.Mensagens.Controllers
 
             return Ok("Deletado com sucesso!");
         }
+        [HttpGet("sessaoChat{id}")]
+        public async Task<ActionResult> GetSessaoChatId(long id)
+        {
+            SessaoChat? SessaoChat = await _dataContext
+                 .SessaoChat.FindAsync(id);
 
-        
+            if (SessaoChat is null)
+            {
+                return BadRequest("Id da Sessão não foi encontrado");
+            }
+            return Ok(SessaoChat);
+        }
+
+
     }
 }
 

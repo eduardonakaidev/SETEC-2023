@@ -5,9 +5,9 @@ namespace Mensagens.Modules.V1.Mensagens.Models.Request;
 
 public class EnviarMensagemDTO
 {
-    public int IdUsuarioAbertura { get; set; }
+    public long IdUsuarioAbertura { get; set; }
 
-    public int IdUsuarioRecebido { get; set; }
+    public long IdUsuarioRecebido { get; set; }
 
     public long? IdMensagemPadrao { get; set; }
 

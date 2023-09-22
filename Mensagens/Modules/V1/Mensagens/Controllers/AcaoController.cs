@@ -1,6 +1,7 @@
 using Mensagens.Data;
 using Mensagens.Modules.V1.Mensagens.Command;
 using Mensagens.Modules.V1.Mensagens.Models;
+using Mensagens.Modules.V1.Mensagens.Models.Request;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions;
@@ -27,11 +28,12 @@ namespace Mensagens.Modules.V1.Mensagens.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Post(Acao Acao)
+        public async Task<ActionResult> Post(CriarAcaoDto Criaracao)
         {
-            _dataContext.Acao.Add(Acao);
+            Acao? acao = new(0, Criaracao.Conteudo, Criaracao.TipoAcao);
+            _dataContext.Acao.Add(acao);
             await _dataContext.SaveChangesAsync();
-            return Ok(Acao);
+            return Ok(acao);
         }
 
         [HttpDelete("acao/{id}")]
@@ -50,7 +52,20 @@ namespace Mensagens.Modules.V1.Mensagens.Controllers
             return Ok("Deletado com sucesso!");
         }
 
+[HttpGet("Acao{id}")]
+    public async Task<ActionResult> GetAcaoId(long id)
+    {
+        Acao? Acao = await _dataContext
+             .Acao.FindAsync(id);
+
+        if (Acao is null)
+        {
+            return BadRequest("Id da ação não foi encontrado");
+        }
+        return Ok(Acao);
+    }
         
     }
+    
 }
 

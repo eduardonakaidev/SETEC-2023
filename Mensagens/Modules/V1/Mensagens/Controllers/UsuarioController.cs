@@ -24,12 +24,13 @@ namespace Mensagens.Modules.V1.Mensagens.Controllers
         public async Task<ActionResult> Get()
         {
             return Ok( await _usuarioCommand.RetornarTodos());
+            
         }
 
         [HttpPost]
         public async Task<ActionResult> Post(SalvarUsuario salvarusuario)
         {
-            Usuario usuario = new Usuario(0, salvarusuario.Nome, salvarusuario.Email);
+            Usuario usuario = new(0, salvarusuario.Nome, salvarusuario.Email);
 
             _dataContext.Usuario.Add(usuario);
             await _dataContext.SaveChangesAsync();

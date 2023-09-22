@@ -19,10 +19,5 @@ public class DataContext : DbContext
     public DbSet<SessaoChat> SessaoChat { get; set; }
 
     public DbSet<Usuario> Usuario { get; set; }
-
-    internal Task SaveChangesAsync()
-    {
-        throw new NotImplementedException();
-    }
 }
 #pragma warning restore CS8618

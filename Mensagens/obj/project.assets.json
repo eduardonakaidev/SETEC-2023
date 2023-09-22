@@ -4208,19 +4208,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\EDUARDO\\.nuget\\packages\\": {}
+    "C:\\Users\\w10\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\EDUARDO\\Desktop\\SETEC-2023\\Mensagens\\Mensagens.csproj",
+      "projectUniqueName": "C:\\Users\\w10\\Desktop\\SETEC-2023\\Mensagens\\Mensagens.csproj",
       "projectName": "Mensagens",
-      "projectPath": "C:\\Users\\EDUARDO\\Desktop\\SETEC-2023\\Mensagens\\Mensagens.csproj",
-      "packagesPath": "C:\\Users\\EDUARDO\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\EDUARDO\\Desktop\\SETEC-2023\\Mensagens\\obj\\",
+      "projectPath": "C:\\Users\\w10\\Desktop\\SETEC-2023\\Mensagens\\Mensagens.csproj",
+      "packagesPath": "C:\\Users\\w10\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\w10\\Desktop\\SETEC-2023\\Mensagens\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\EDUARDO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\w10\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4228,6 +4233,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

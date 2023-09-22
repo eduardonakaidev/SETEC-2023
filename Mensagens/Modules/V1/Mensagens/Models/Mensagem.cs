@@ -7,8 +7,8 @@ namespace Mensagens.Modules.V1.Mensagens.Models;
 public class Mensagem
 {
     public Mensagem(long id,
-        int idUsuarioEnvio,
-        int idUsuarioRecebido,
+        long idUsuarioEnvio,
+        long idUsuarioRecebido,
         long idSessaoChat, 
         long? idMensagemPadrao, 
         long? idAcoes, 
@@ -34,10 +34,10 @@ public class Mensagem
     public long Id { get; set; }
 
     [ForeignKey("Usuario")]
-    public int IdUsuarioEnvio { get; set; }
+    public long IdUsuarioEnvio { get; set; }
 
     [ForeignKey("Usuario")]
-    public int IdUsuarioRecebido { get; set; }
+    public long IdUsuarioRecebido { get; set; }
 
     [ForeignKey("SessaoChat")]
     public long IdSessaoChat { get; set; }

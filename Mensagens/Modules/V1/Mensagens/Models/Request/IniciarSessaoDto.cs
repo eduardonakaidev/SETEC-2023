@@ -4,9 +4,9 @@ namespace Mensagens.Modules.V1.Mensagens.Models.Request
 {
     public class IniciarSessaoDto
     {
-        public IniciarSessaoDto(DateTime abertura, DateTime ultimaAtividade, StatusSessaoChat status, int usuarioAbertura, int usuarioRecebimento)
+        public IniciarSessaoDto(DateTime abertura, DateTime ultimaAtividade, StatusSessaoChat status, long usuarioAbertura, long usuarioRecebimento)
         {
-            Abertura = abertura;
+            Abertura = DateTime.Now;
             UltimaAtividade = ultimaAtividade;
             Status = status;
             UsuarioAbertura = usuarioAbertura;
@@ -16,8 +16,8 @@ namespace Mensagens.Modules.V1.Mensagens.Models.Request
         public DateTime Abertura{ get; set; }
         public DateTime UltimaAtividade { get;set;}
         public StatusSessaoChat Status { get;set;}
-        public int  UsuarioAbertura {  get;set;}
-        public int UsuarioRecebimento { get;set;}
+        public long  UsuarioAbertura {  get;set;}
+        public long UsuarioRecebimento { get;set;}
 
     }
 }
