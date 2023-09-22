@@ -48,7 +48,7 @@ public class MensagemController : ControllerBase
     public async Task<ActionResult> Post(SalvarMensagem enviarmensagem)
     {
         Mensagem mensagem = new (0, enviarmensagem.UsuarioEnvio,enviarmensagem.UsuarioRecebido,
-            enviarmensagem.IdSessaoChat,null,(long)enviarmensagem.Acoes,enviarmensagem.Texto, enviarmensagem.DataHora,enviarmensagem.StatusMensagem);
+            enviarmensagem.IdSessaoChat,null,enviarmensagem.Acoes,enviarmensagem.Texto, enviarmensagem.DataHora,enviarmensagem.StatusMensagem);
         SessaoChat? sessao = await _datacontext.SessaoChat.FindAsync(mensagem.IdSessaoChat);
         Models.Usuario? usuarioEnvia = await _datacontext.Usuario.FindAsync(mensagem.IdUsuarioEnvio);
         Models.Usuario? usuarioRecebe = await _datacontext.Usuario.FindAsync(mensagem.IdUsuarioRecebido);
